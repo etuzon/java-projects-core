@@ -18,4 +18,24 @@ public class ExpectObject {
 	public String getStr() {
 		return str;
 	}
+	
+	public boolean isExpect(String input) {
+		if (type == ExpectTypeEnum.CONTAINS) {
+			return isContains(input);
+		}
+		
+		if (type == ExpectTypeEnum.EQUALS) {
+			return isEquals(input);
+		}
+		
+		return false;
+	}
+	
+	private boolean isContains(String input) {
+		return input.contains(str);
+	}
+	
+	private boolean isEquals(String input) {
+		return input.equals(str);
+	}
 }

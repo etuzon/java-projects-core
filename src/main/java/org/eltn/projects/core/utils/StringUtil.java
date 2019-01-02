@@ -1,16 +1,16 @@
 package org.eltn.projects.core.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.eltn.projects.core.enums.BooleanEnum;
-import org.eltn.projects.core.enums.ExpectTypeEnum;
+import org.eltn.projects.core.base.BaseObject;
 import org.eltn.projects.core.objects.ExpectObject;
 import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
 
-public final class StringUtil {
+public final class StringUtil extends BaseObject {
 	public static final String REPLACE_STR = "$REPLACE_STR$";
 
 	private StringUtil() {
@@ -24,34 +24,24 @@ public final class StringUtil {
 
 	public static boolean isExpect(String input, List<ExpectObject> expectsList) {
 		for (ExpectObject expect : expectsList) {
-			if (expect.getType() == ExpectTypeEnum.CONTAIN) {
-				if (input.contains(expect.getStr())) {
-					return true;
-				}
+			if (expect.isExpect(input)) {
+				return true;
 			}
 		}
 
 		return false;
 	}
 
-	public static String removeInvertedCommas(String str) {
-		if (str.length() > 1) {
-			if ((str.charAt(0) == '\"') && (str.charAt(str.length() - 1) == '\"')) {
-				str = str.substring(1, str.length() - 1);
-			}
-		}
+	public static List<String> getContainList(String str, List<String> containList) {
+		List<String> result = new ArrayList<String>();
 
-		return str;
-	}
-
-	public static String getContainString(String str, List<String> containList) {
 		for (String contain : containList) {
 			if (str.contains(contain)) {
-				return contain;
+				result.add(contain);
 			}
 		}
 
-		return "";
+		return result;
 	}
 
 	public static List<String> split(String str, char ch) {
@@ -61,9 +51,9 @@ public final class StringUtil {
 
 	public static String replace(String str, String... args) throws Exception {
 		if (args == null) {
-			throw new Exception("args for [" + str + "] cannot be NULL");
+			throw new Exception("args for [" + str + "] cannot be null");
 		}
-		
+
 		int count = StringUtils.countMatches(str, REPLACE_STR);
 		String argsArr[] = args.clone();
 
@@ -72,8 +62,8 @@ public final class StringUtil {
 		}
 
 		if (count != argsArr.length) {
-			throw new Exception("Replace for [" + str + "] contain [" + argsArr.length
-					+ "] args and should contain [" + count + "] args");
+			throw new Exception("Replace for [" + str + "] contain [" + argsArr.length + "] args and should contain ["
+					+ count + "] args");
 		}
 
 		String result = str;
@@ -85,20 +75,6 @@ public final class StringUtil {
 		}
 
 		return result;
-	}
-
-	public static BooleanEnum asBoolean(String str) {
-		str = str.toLowerCase();
-
-		if (str.equals("true")) {
-			return BooleanEnum.TRUE;
-		}
-
-		if (str.equals("false")) {
-			return BooleanEnum.FALSE;
-		}
-
-		return BooleanEnum.NA;
 	}
 
 	public static String xmlToString(Element element) {

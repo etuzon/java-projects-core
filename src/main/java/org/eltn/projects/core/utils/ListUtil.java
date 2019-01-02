@@ -5,20 +5,28 @@ import java.util.List;
 
 import org.eltn.projects.core.base.BaseObject;
 
-public final class ListUtil<T> extends BaseObject {
+public final class ListUtil extends BaseObject {
 	
 	private ListUtil() {
 		throw new UnsupportedOperationException("Util cannot be instantiated");
 	}
 	
-	public static String getFirstContainString(String str, List<String> containList) {
-		for (String contains : containList) {
-			if (str.contains(contains)) {
-				return contains;
+	/*******************************
+	 * Get list of of objects in containList that exists in list
+	 * @param containList
+	 * @param list
+	 * @return
+	 */
+	public static <T> List<T> getContainList(List<T> list, List<T> containList) {
+		List<T> result = new ArrayList<T>();
+
+		for (T obj : containList) {
+			if (list.contains(obj)) {
+				result.add(obj);
 			}
 		}
-		
-		return null;
+
+		return result;
 	}
 
 	/*******************************
@@ -27,23 +35,20 @@ public final class ListUtil<T> extends BaseObject {
 	 * @param list
 	 * @return
 	 */
-	public static <T> List<T> getNotContainList(List<T> containList, List<T> list) {
-		List<T> notContainList = new ArrayList<T>();
+	public static <T> List<T> getNotContainList(List<T> list, List<T> containList) {
+		List<T> result = new ArrayList<T>();
 
 		for (T obj : containList) {
 			if (list.contains(obj) == false) {
-				notContainList.add(obj);
+				result.add(obj);
 			}
 		}
 
-		return notContainList;
+		return result;
 	}
 
-	public static <T> List<T> arrayToList(T[] array, int startIndex) {
+	public static <T> List<T> asList(T[] array, int startIndex) {
 		validateNotNull(array);
-		
-		if (array == null)
-			return null;
 
 		List<T> result = new ArrayList<T>();
 
@@ -81,24 +86,23 @@ public final class ListUtil<T> extends BaseObject {
 		return result;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public static <T> List<T> asList(T... args) {
-		List<T> resultList = new ArrayList<T>();
+	public static <T> List<T> asList(@SuppressWarnings("unchecked") T... args) {
+		List<T> result = new ArrayList<T>();
 	
 		for (T arg : args) {
-			resultList.add(arg);
+			result.add(arg);
 		}
 		
-		return resultList;
+		return result;
 	}
 	
 	public static <T> List<T> clone(List<T> list) {
-		List<T> resultList = new ArrayList<T>();
+		List<T> result = new ArrayList<T>();
 		
 		for (T member : list) {
-			resultList.add(member);
+			result.add(member);
 		}
 		
-		return resultList;
+		return result;
 	}
 }
