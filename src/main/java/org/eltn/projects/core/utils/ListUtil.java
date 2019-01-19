@@ -72,12 +72,13 @@ public final class ListUtil extends BaseObject {
 	}
 	
 	public static <T> String getMultilineStringFromList(List<T> list) {
-		String result = "";
-
+		StringBuilder sb = new StringBuilder();
+		
 		for (T obj : list) {
-			String str = obj.toString();
-			result += str + "\n";
+			sb.append(obj.toString()).append("\n");
 		}
+		
+		String result = sb.toString();
 		
 		if (result.isEmpty() == false) {
 			result = StringUtil.removeLastChar(result);

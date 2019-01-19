@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.eltn.projects.core.expections.FileNotDeletedException;
+
 public final class FileUtil {
 	private FileUtil() {
 		throw new UnsupportedOperationException("Util cannot be instantiated");
@@ -29,11 +31,11 @@ public final class FileUtil {
 		}
 
 		int index = getLastSlashIndex(path);
-		
+
 		if (index == -1) {
 			return "";
 		}
-		
+
 		if (index == path.length() - 1) {
 			path = path.substring(0, index);
 			return (getParentDirectory(path));
@@ -42,17 +44,31 @@ public final class FileUtil {
 		return path.substring(0, index);
 	}
 
-	public static void deleteOldFiles(String directory, int olderInDays) {
+	public static void deleteOldFiles(String directory, int olderInDays) throws FileNotDeletedException {
 		File folder = new File(directory);
 		File[] fileArr = folder.listFiles();
+
+		if (fileArr == null) {
+			return;
+		}
+
+		List<String> filesFailedToBeDeletedList = new ArrayList<String>();
 
 		for (File file : fileArr) {
 			if (file.isFile()) {
 				long diffInMs = new Date().getTime() - file.lastModified();
 				if (diffInMs > (long) olderInDays * DateUtil.MS_IN_DAY) {
-					file.delete();
+					try {
+						file.delete();
+					} catch (SecurityException e) {
+						filesFailedToBeDeletedList.add(file.getName());
+					}
 				}
 			}
+		}
+
+		if (filesFailedToBeDeletedList.isEmpty() == false) {
+			throw new FileNotDeletedException(ListUtil.getMultilineStringFromList(filesFailedToBeDeletedList));
 		}
 	}
 
@@ -61,6 +77,10 @@ public final class FileUtil {
 
 		File folder = new File(directory);
 		File[] fileArr = folder.listFiles();
+
+		if (fileArr == null) {
+			return fileNameList;
+		}
 
 		for (File file : fileArr) {
 			if (file.isFile()) {

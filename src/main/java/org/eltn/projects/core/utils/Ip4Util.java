@@ -5,9 +5,9 @@ import org.eltn.projects.core.base.BaseObject;
 public final class Ip4Util extends BaseObject {
 
 	private Ip4Util() {
-        throw new UnsupportedOperationException("Util cannot be instantiated");
-    }
-	
+		throw new UnsupportedOperationException("Util cannot be instantiated");
+	}
+
 	public static boolean isValidIp(String str) {
 		validateNotNull(str);
 
@@ -18,11 +18,11 @@ public final class Ip4Util extends BaseObject {
 
 		for (String temp : splitStr) {
 			try {
-				int octat = Integer.valueOf(temp);
-				
+				Integer octat = Integer.valueOf(temp);
+
 				if (isNumberBetween0To255(octat) == false) {
 					return false;
-				}	
+				}
 			} catch (NumberFormatException e) {
 				return false;
 			}
@@ -30,28 +30,25 @@ public final class Ip4Util extends BaseObject {
 
 		return true;
 	}
-	
-	public static String valueOf(int octats[]) {
+
+	public static String toIPv4(int octats[]) {
 		validateNotNull(octats);
-		
+
 		if (octats.length != 4) {
 			return null;
 		}
-		
-		String ip = "";
-		
-		for (int i=0; i < 4; i++) {
+
+		for (int i = 0; i < 4; i++) {
 			if (isNumberBetween0To255(octats[i]) == false) {
 				return null;
 			}
-			
-			ip = ip + String.valueOf(octats[i]) + ".";
 		}
-		
-		return StringUtil.removeLastChar(ip);
+
+		return String.valueOf(octats[0]) + "." + String.valueOf(octats[1]) + "." + String.valueOf(octats[2]) + "."
+				+ String.valueOf(octats[3]);
 	}
-	
-	private static boolean isNumberBetween0To255(int num) {
-		return (num >= 0) && (num <=  255);
+
+	private static boolean isNumberBetween0To255(Integer num) {
+		return (num >= 0) && (num <= 255);
 	}
 }

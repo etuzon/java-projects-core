@@ -82,14 +82,15 @@ public final class StringUtil extends BaseObject {
 	}
 
 	public static String getExceptionStacktrace(Exception e) {
-		String stacktrace = "";
+		StringBuilder sb = new StringBuilder();
 
 		for (StackTraceElement stackElement : e.getStackTrace()) {
-			stacktrace += stackElement.getClassName() + "." + stackElement.getMethodName() + "("
-					+ stackElement.getFileName() + ":" + stackElement.getLineNumber() + ")\n";
+			sb.append(stackElement.getClassName()).append(".").
+			append(stackElement.getMethodName()).append("(").append(stackElement.getFileName())
+			.append(":").append(stackElement.getLineNumber()).append(")\n");
 		}
 
-		return stacktrace;
+		return sb.toString();
 	}
 
 	public static String removeLastChar(String str) {

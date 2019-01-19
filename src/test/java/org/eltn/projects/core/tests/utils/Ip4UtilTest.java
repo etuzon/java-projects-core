@@ -49,8 +49,8 @@ public class Ip4UtilTest extends BaseTest {
 	}
 
 	@Test(dataProvider = "ip4OctatArray")
-	public void valueOf_test(int[] octats, String ip) {
-		String currentIp = Ip4Util.valueOf(octats);
+	public void toIPv4_test(int[] octats, String ip) {
+		String currentIp = Ip4Util.toIPv4(octats);
 		SoftAssert.assertTrueNow(currentIp != null, "valueOf result for octats [" + Arrays.toString(octats) + "] is null",
 				"Verify that valueOf result is not null");
 		SoftAssert.assertTrueNow(ip.equals(currentIp),
@@ -65,10 +65,10 @@ public class Ip4UtilTest extends BaseTest {
 	}
 
 	@Test(dataProvider = "invalidIp4OctatArray")
-	public void valueOf_invalid_octats_negative_test(int[] octats) {
-		String ip = Ip4Util.valueOf(octats);
+	public void toIPv4_invalid_octats_negative_test(int[] octats) {
+		String ip = Ip4Util.toIPv4(octats);
 		SoftAssert.assertTrueNow(
-				Ip4Util.valueOf(octats) == null, "valueOf result for invalid octats [" + Arrays.toString(octats)
+				Ip4Util.toIPv4(octats) == null, "valueOf result for invalid octats [" + Arrays.toString(octats)
 						+ "] is [" + ip + "] and should be null",
 				"Verify that valueOf result for invalid octats is null");
 	}
@@ -79,8 +79,8 @@ public class Ip4UtilTest extends BaseTest {
 	}
 
 	@Test(dataProvider = "ip4OctatArrayNotEqualToIp")
-	public void valueOf_not_equal_to_result_negative_test(int[] octats, String ip) {
-		String currentIp = Ip4Util.valueOf(octats);
+	public void toIPv4_not_equal_to_result_negative_test(int[] octats, String ip) {
+		String currentIp = Ip4Util.toIPv4(octats);
 		SoftAssert.assertTrueNow(currentIp != null, "valueOf result for octats [" + Arrays.toString(octats) + "] is null",
 				"Verify that valueOf result is not null");
 		SoftAssert.assertTrueNow(ip.equals(currentIp) == false,

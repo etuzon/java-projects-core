@@ -7,12 +7,12 @@ public final class MethodUtil {
 	}
 	
 	public static String geStackTraceAsString(StackTraceElement stArr[]) {
-		String result = "";
+		StringBuilder sb = new StringBuilder();
 
 		for (StackTraceElement st : stArr) {
-			result += st.toString() + "\n";
+			sb.append(st.toString()).append("\n");
 		}
 
-		return result;
+		return sb.toString();
 	}
 }
