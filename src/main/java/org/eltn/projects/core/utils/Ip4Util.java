@@ -38,7 +38,7 @@ public final class Ip4Util extends BaseObject {
 			return null;
 		}
 
-		for (int i = 0; i < 4; i++) {
+		for (int i=0; i < 4; i++) {
 			if (isNumberBetween0To255(octats[i]) == false) {
 				return null;
 			}

@@ -53,7 +53,7 @@ public final class ListUtilTest extends BaseTest {
 				"Verify that result of asList with input array [" + Arrays.toString(arr) + "] and index [" + startIndex
 						+ "] is [" + resultListSize + "]. result list [" + Arrays.toString(resultList.toArray()) + "]");
 
-		for (int i = 0; i < resultListSize; i++) {
+		for (int i=0; i < resultListSize; i++) {
 			SoftAssert.assertTrueNow(resultList.get(i).equals(arr[startIndex + i]),
 					"Element [" + resultList.get(i).intValue() + "] in result list index [" + i
 							+ "] is different from element [" + arr[startIndex + i] + "] in input array index ["

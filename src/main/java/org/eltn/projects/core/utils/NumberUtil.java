@@ -25,7 +25,7 @@ public final class NumberUtil {
 	}
 
 	private static String addZeroBeforeString(String str, int zeroAmount) {
-		for (int i = 0; i < zeroAmount; i++) {
+		for (int i=0; i < zeroAmount; i++) {
 			str = "0" + str;
 		}
 
