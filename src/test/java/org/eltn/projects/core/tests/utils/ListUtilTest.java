@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.eltn.projects.core.expections.InvalidValueException;
 import org.eltn.projects.core.tests.asserts.SoftAssert;
 import org.eltn.projects.core.tests.base.BaseTest;
+import org.eltn.projects.core.tests.exceptions.AutomationTestException;
 import org.eltn.projects.core.utils.ListUtil;
 import org.testng.annotations.Test;
 
@@ -33,13 +35,13 @@ public final class ListUtilTest extends BaseTest {
 	}
 	
 	@Test
-	public void asList_with_startIndex_test() {
+	public void asList_with_startIndex_test() throws AutomationTestException {
 		final Integer[] arr = { 1, 3, 6, 8 };
 		final int startIndex = 2;
 
 		logger.info(
 				"Run ListUtil.asList with input array [" + Arrays.toString(arr) + "] and index [" + startIndex + "]");
-		List<Integer> resultList = ListUtil.asList(arr, startIndex);
+		List<Integer> resultList = asList(arr, startIndex);
 
 		SoftAssert.assertTrueNow(resultList != null, "Result of asList should not be null",
 				"Verify that result of asList is not null");
@@ -65,13 +67,13 @@ public final class ListUtilTest extends BaseTest {
 	}
 
 	@Test
-	public void asList_with_startIndex_outOfBound_negative_test() {
+	public void asList_with_startIndex_outOfBound_negative_test() throws AutomationTestException {
 		final Integer[] arr = { 1, 3, 6, 8 };
 		final int startIndex = 20;
 
 		logger.info(
 				"Run ListUtil.asList with input array [" + Arrays.toString(arr) + "] and index [" + startIndex + "]");
-		List<Integer> resultList = ListUtil.asList(arr, startIndex);
+		List<Integer> resultList = asList(arr, startIndex);
 
 		SoftAssert.assertTrueNow(resultList != null, "Result of asList should not be null",
 				"Verify that result of asList is not null");
@@ -141,5 +143,13 @@ public final class ListUtilTest extends BaseTest {
 		SoftAssert.assertTrueNow(
 				list.get(index).equals(str), "Element [" + list.get(index) + "] in result list in index [" + index + "] should be [" + str + "]",
 				"Verify that element in index [" + index + "] in result list is equal to [" + str + "]");
+	}
+	
+	private <T> List<T> asList(T[] arr, int startIndex) throws AutomationTestException {
+	    try {
+            return ListUtil.asList(arr, startIndex);
+        } catch (InvalidValueException e) {
+            throw new AutomationTestException(e);
+        }
 	}
 }

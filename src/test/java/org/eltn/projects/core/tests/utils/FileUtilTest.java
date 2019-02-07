@@ -3,8 +3,10 @@ package org.eltn.projects.core.tests.utils;
 import java.io.File;
 import java.util.List;
 
+import org.eltn.projects.core.expections.InvalidValueException;
 import org.eltn.projects.core.tests.asserts.SoftAssert;
 import org.eltn.projects.core.tests.base.BaseTest;
+import org.eltn.projects.core.tests.exceptions.AutomationTestException;
 import org.eltn.projects.core.utils.FileUtil;
 import org.eltn.projects.core.utils.ListUtil;
 import org.testng.annotations.BeforeClass;
@@ -73,8 +75,8 @@ public class FileUtilTest extends BaseTest {
 	}
 
 	@Test(dataProvider = "fileNameInPath")
-	public void getFileNameFromPath_test(String path, String filename) {
-		SoftAssert.assertTrueNow(FileUtil.getFileNameFromPath(path).equals(filename),
+	public void getFileNameFromPath_test(String path, String filename) throws AutomationTestException {
+		SoftAssert.assertTrueNow(getFileNameFromPath(path).equals(filename),
 				"File name [" + filename + "] was not found from path [" + path + "]",
 				"Verify that file name [" + filename + "] will be recieved from path [" + path + "]");
 	}
@@ -86,8 +88,8 @@ public class FileUtilTest extends BaseTest {
 	}
 
 	@Test(dataProvider = "noFileNameInPath")
-	public void getFileNameFromPath__noFileName_negative_test(String path) {
-		String filename = FileUtil.getFileNameFromPath(path);
+	public void getFileNameFromPath__noFileName_negative_test(String path) throws AutomationTestException {
+		String filename = getFileNameFromPath(path);
 		SoftAssert.assertTrueNow(filename.isEmpty(), "File name should be empty but it contain text [" + filename + "]",
 				"Verify that file name is empty for path [" + path + "] that is end with slash");
 	}
@@ -103,8 +105,8 @@ public class FileUtilTest extends BaseTest {
 	}
 
 	@Test(dataProvider = "parentDirectory")
-	public void getParentDirectory_test(String path, String parentDirectory) {
-		String currentParentDirectory = FileUtil.getParentDirectory(path);
+	public void getParentDirectory_test(String path, String parentDirectory) throws AutomationTestException {
+		String currentParentDirectory = getParentDirectory(path);
 		SoftAssert.assertTrueNow(parentDirectory.equals(currentParentDirectory),
 				"Pgarent directory of path [" + path + "] should be [" + parentDirectory + "] but it is ["
 						+ currentParentDirectory + "]",
@@ -132,5 +134,21 @@ public class FileUtilTest extends BaseTest {
 				"File list size in path [" + getFileListPath + "] is [" + fileList.size() + "] but should be ["
 						+ expectedFileListSize + "].\nFile list:\n" + ListUtil.getMultilineStringFromList(fileList),
 				"Verify that file list size is [" + expectedFileListSize + "]");
+	}
+	
+	private String getFileNameFromPath(String path) throws AutomationTestException {
+	    try {
+            return FileUtil.getFileNameFromPath(path);
+        } catch (InvalidValueException e) {
+            throw new AutomationTestException(e);
+        }
+	}
+	
+	private String getParentDirectory(String path) throws AutomationTestException {
+	    try {
+            return FileUtil.getParentDirectory(path);
+        } catch (InvalidValueException e) {
+            throw new AutomationTestException(e);
+        }
 	}
 }

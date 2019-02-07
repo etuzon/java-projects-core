@@ -6,14 +6,31 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.eltn.projects.core.base.BaseObject;
 import org.eltn.projects.core.expections.FileNotDeletedException;
+import org.eltn.projects.core.expections.InvalidValueException;
 
-public final class FileUtil {
+/*********************************************
+ * Operations on files and directories utility.
+ * 
+ * @author Eyal Tuzon.
+ *
+ */
+public final class FileUtil extends BaseObject {
 	private FileUtil() {
 		throw new UnsupportedOperationException("Util cannot be instantiated");
 	}
 
-	public static String getFileNameFromPath(String path) {
+	/*********************************************
+	 * Get file name from input path.
+	 * 
+	 * @param path Input path.
+	 * @return File name.
+	 * @throws InvalidValueException in case path is null.
+	 */
+	public static String getFileNameFromPath(String path) throws InvalidValueException {
+	    validateNotNull(path);
+
 		int index = getLastSlashIndex(path);
 
 		if (index == -1) {
@@ -25,7 +42,15 @@ public final class FileUtil {
 		return path.substring(index + 1);
 	}
 
-	public static String getParentDirectory(String path) {
+	/*********************************************
+	 * Get parent directory of path.
+	 * @param path Path.
+	 * @return Parent directory of path.
+	 * @throws InvalidValueException in case path is null.
+	 */
+	public static String getParentDirectory(String path) throws InvalidValueException {
+	    validateNotNull(path);
+	    
 		if (path.isEmpty()) {
 			return "";
 		}
@@ -44,6 +69,13 @@ public final class FileUtil {
 		return path.substring(0, index);
 	}
 
+	/*********************************************
+	 * Delete files in directory that are older from input number of days.
+	 * 
+	 * @param directory Directory path.
+	 * @param olderInDays Number of days that files should be older to be deleted.
+	 * @throws FileNotDeletedException in case file is not deleted.
+	 */
 	public static void deleteOldFiles(String directory, int olderInDays) throws FileNotDeletedException {
 		File folder = new File(directory);
 		File[] fileArr = folder.listFiles();
@@ -72,6 +104,13 @@ public final class FileUtil {
 		}
 	}
 
+	/*********************************************
+	 * Get file list in directory and have an extension from the extensions array.
+	 * 
+	 * @param directory Directory path.
+	 * @param extensionArr Array of extensions.
+	 * @return File list in directory that have extension from the extensions array.
+	 */
 	public static List<String> getFileList(String directory, String extensionArr[]) {
 		List<String> fileNameList = new ArrayList<String>();
 

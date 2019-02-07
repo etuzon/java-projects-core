@@ -7,12 +7,12 @@
 
 	<name>ELTN Java core projects</name>
 
-	<version>1.0.3</version>
+	<version>1.0.5-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.eltn.java</groupId>
 		<artifactId>base.pom</artifactId>
-		<version>1.0.3-base</version>
+		<version>1.0.6-base</version>
 	</parent>
 
 	<properties>
@@ -22,6 +22,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
