@@ -7,7 +7,7 @@
 
 	<name>ELTN Java core projects</name>
 
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.0.6</version>
 
 	<parent>
 		<groupId>org.eltn.java</groupId>
