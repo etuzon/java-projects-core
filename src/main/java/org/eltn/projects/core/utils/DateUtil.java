@@ -7,7 +7,7 @@ import java.util.Date;
 /***************************************************
  * Date and time utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public final class DateUtil {

@@ -5,7 +5,7 @@ import org.eltn.projects.core.enums.ExpectTypeEnum;
 /**********************************************
  * Expect object contain expect type and the string that should be expected.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public class ExpectObject {

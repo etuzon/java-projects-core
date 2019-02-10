@@ -1,16 +1,16 @@
 package org.eltn.projects.core.utils;
 
-import org.eltn.projects.core.base.BaseObject;
+import org.eltn.projects.core.base.ObjectBase;
 import org.eltn.projects.core.expections.InvalidValueException;
 
 /********************************************
  * Arrays utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  * @param <T> Object.
  */
-public final class ArrayUtil <T> extends BaseObject {
+public final class ArrayUtil <T> extends ObjectBase {
 	
 	private ArrayUtil() {
         throw new UnsupportedOperationException("Util cannot be instantiated");

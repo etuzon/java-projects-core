@@ -3,7 +3,7 @@ package org.eltn.projects.core.utils;
 /********************************************
  * Thread utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public final class ThreadUtil {

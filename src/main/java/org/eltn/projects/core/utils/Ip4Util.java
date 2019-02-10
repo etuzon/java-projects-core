@@ -1,15 +1,15 @@
 package org.eltn.projects.core.utils;
 
-import org.eltn.projects.core.base.BaseObject;
+import org.eltn.projects.core.base.ObjectBase;
 import org.eltn.projects.core.expections.InvalidValueException;
 
 /******************************************************
  * IPv4 utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
-public final class Ip4Util extends BaseObject {
+public final class Ip4Util extends ObjectBase {
 
 	private Ip4Util() {
 		throw new UnsupportedOperationException("Util cannot be instantiated");

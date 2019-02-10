@@ -6,17 +6,17 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.eltn.projects.core.base.BaseObject;
+import org.eltn.projects.core.base.ObjectBase;
 import org.eltn.projects.core.expections.FileNotDeletedException;
 import org.eltn.projects.core.expections.InvalidValueException;
 
 /*********************************************
  * Operations on files and directories utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
-public final class FileUtil extends BaseObject {
+public final class FileUtil extends ObjectBase {
 	private FileUtil() {
 		throw new UnsupportedOperationException("Util cannot be instantiated");
 	}

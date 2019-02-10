@@ -3,16 +3,16 @@ package org.eltn.projects.core.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eltn.projects.core.base.BaseObject;
+import org.eltn.projects.core.base.ObjectBase;
 import org.eltn.projects.core.expections.InvalidValueException;
 
 /*********************************************
  * List utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
-public final class ListUtil extends BaseObject {
+public final class ListUtil extends ObjectBase {
 	
 	private ListUtil() {
 		throw new UnsupportedOperationException("Util cannot be instantiated");

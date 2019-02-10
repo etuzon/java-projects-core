@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.eltn.projects.core.base.BaseObject;
+import org.eltn.projects.core.base.ObjectBase;
 import org.eltn.projects.core.expections.InvalidValueException;
 import org.eltn.projects.core.objects.ExpectObject;
 import org.jdom2.Element;
@@ -14,10 +14,10 @@ import org.jdom2.output.XMLOutputter;
 /*****************************************
  * String utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
-public final class StringUtil extends BaseObject {
+public final class StringUtil extends ObjectBase {
     public static final String REPLACE_STR = "$REPLACE_STR$";
 
     private StringUtil() {

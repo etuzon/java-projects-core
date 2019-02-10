@@ -5,7 +5,7 @@ import org.eltn.projects.core.utils.StringUtil;
 /**************************************
  * Base exception.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public abstract class EltnExceptionBase extends Exception {

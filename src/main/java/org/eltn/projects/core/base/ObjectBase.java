@@ -5,10 +5,10 @@ import org.eltn.projects.core.expections.InvalidValueException;
 /***************************************
  * Base object that can be inherit by every class.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  * 
  */
-public abstract class BaseObject {
+public abstract class ObjectBase {
     /***************************************
      * Validate that array not null.
      * Method throws InvalidValueException in case array is null.

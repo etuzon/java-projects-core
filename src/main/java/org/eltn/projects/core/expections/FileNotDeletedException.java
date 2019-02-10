@@ -3,7 +3,7 @@ package org.eltn.projects.core.expections;
 /**********************************************
  * Exception will be thrown when file or directory not succeed to be deleted.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public class FileNotDeletedException extends EltnExceptionBase {

@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 /**********************************************
  * URL utility.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public final class UrlUtil {

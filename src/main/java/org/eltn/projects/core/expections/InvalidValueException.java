@@ -3,7 +3,7 @@ package org.eltn.projects.core.expections;
 /********************************************
  * Exception will be thrown when input value is invalid.
  * 
- * @author Eyal Tuzon.
+ * @author Eyal Tuzon
  *
  */
 public class InvalidValueException extends EltnExceptionBase {
