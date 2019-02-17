@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>projects.core</artifactId>
+	<artifactId>java.projects.core</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Java core projects</name>
@@ -18,8 +18,8 @@
 	</licenses>
 
 	<parent>
-		<groupId>io.github.tuzon.java</groupId>
-		<artifactId>base.pom</artifactId>
+		<groupId>io.github.tuzon</groupId>
+		<artifactId>java.base.pom</artifactId>
 		<version>1.0.8-base</version>
 	</parent>
 
