@@ -17,7 +17,7 @@ public final class ThreadUtil {
 	 * The method let user not need add try/catch.
 	 * 
 	 * @param ms Sleep for X milliseconds.
-	 *        In case ms is <= 0 sleep will not happen.
+	 *        In case ms is &lt;= 0 sleep will not happen.
 	 */
 	public static void sleep(long ms) {
 		if (ms <= 0) {

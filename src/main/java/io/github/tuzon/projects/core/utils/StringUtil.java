@@ -86,17 +86,17 @@ public final class StringUtil extends ObjectBase {
     }
 
     /*****************************************
-     * Replace String  templates with input agrs, when template is {@link StringUtil.REPLACE_STR}.
+     * Replace String  templates with input agrs, when template is {@link #REPLACE_STR}.
      * 
-     * Example: str = "12345{@link StringUtil.REPLACE_STR}abc{@link StringUtil.REPLACE_STR}de"
+     * Example: str = "12345{@link #REPLACE_STR}abc{@link #REPLACE_STR}de"
      *          StringUtil.replace(str, "zxc", "qwe");
      *          output = "12345zxcabcqwede".
      * 
      * @param str String
-     * @param args Arguments that will replace the templates StringUtil.REPLACE_STR
+     * @param args Arguments that will replace the templates 'StringUtil.REPLACE_STR'
      * @return Replaced String
      * @throws InvalidValueException in case args == null, or there are no args,
-     *         or the amount of args is different from the amount of {@link StringUtil.REPLACE_STR} in 'str'.
+     *         or the amount of args is different from the amount of {@link #REPLACE_STR} in 'str'.
      */
     public static String replace(String str, String... args) throws InvalidValueException {
         if (args == null) {
