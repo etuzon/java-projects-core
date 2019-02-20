@@ -5,17 +5,17 @@
 	<artifactId>java.projects.core</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Java core projects</name>
+	<name>Java projects core</name>
 
-	<version>1.0.9</version>
+	<version>1.0.10</version>
 
-    <description>General Java utilities</description>
+    <description>General utilities that will be used in Java projects</description>
 
-    <url>https://github.com/tuzon/eltn.java.projects.core</url>
+    <url>https://github.com/tuzon/Java-Projects-Core</url>
 
     <scm>
-        <url>https://github.com/tuzon/eltn.java.projects.core</url>
-        <connection>https://github.com/tuzon/eltn.java.projects.core.git</connection>
+        <url>https://github.com/tuzon/Java-Projects-Core</url>
+        <connection>https://github.com/tuzon/Java-Projects-Core.git</connection>
     </scm>
 
 	<licenses>
@@ -29,7 +29,7 @@
 	<parent>
 		<groupId>io.github.tuzon</groupId>
 		<artifactId>java.base.pom</artifactId>
-		<version>1.0.10-base</version>
+		<version>1.0.12-base</version>
 	</parent>
 
 	<properties>
