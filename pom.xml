@@ -7,15 +7,15 @@
 
 	<name>Java projects core</name>
 
-	<version>1.0.10</version>
+	<version>1.0.12</version>
 
     <description>General utilities that will be used in Java projects</description>
 
-    <url>https://github.com/tuzon/Java-Projects-Core</url>
+    <url>https://github.com/etuzon/Java-Projects-Core</url>
 
     <scm>
-        <url>https://github.com/tuzon/Java-Projects-Core</url>
-        <connection>https://github.com/tuzon/Java-Projects-Core.git</connection>
+        <url>https://github.com/etuzon/Java-Projects-Core</url>
+        <connection>https://github.com/etuzon/Java-Projects-Core.git</connection>
     </scm>
 
 	<licenses>
@@ -27,9 +27,9 @@
 	</licenses>
 
 	<parent>
-		<groupId>io.github.tuzon</groupId>
+		<groupId>io.github.etuzon</groupId>
 		<artifactId>java.base.pom</artifactId>
-		<version>1.0.12-base</version>
+		<version>1.0.14-base</version>
 	</parent>
 
 	<properties>
