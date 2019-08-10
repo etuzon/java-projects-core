@@ -6,7 +6,7 @@ package io.github.etuzon.projects.core.expections;
  * @author Eyal Tuzon
  *
  */
-public class FileNotDeletedException extends EltnExceptionBase {
+public class FileNotDeletedException extends EtuzonExceptionBase {
 
 	private static final long serialVersionUID = 1L;
 

@@ -105,7 +105,7 @@ public class StringUtilTest extends BaseUnitTest {
 		SoftAssertUnitTest.assertTrueNow(expectedResult.equals(result),
 				"Result of replace is [" + result + "] and should be [" + expectedResult + "]");
 	}
-	
+
 	private void verifyElementInIndex(List<String> resultList, int index, String expectedElement) {
 		SoftAssertUnitTest.assertTrueNow(resultList.get(index).equals(expectedElement),
 				"Result list [" + Arrays.toString(resultList.toArray()) + "] element in index [" + index + "] is ["

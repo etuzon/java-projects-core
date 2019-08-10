@@ -6,7 +6,7 @@ package io.github.etuzon.projects.core.expections;
  * @author Eyal Tuzon
  *
  */
-public class InvalidValueException extends EltnExceptionBase {
+public class InvalidValueException extends EtuzonExceptionBase {
 
 	private static final long serialVersionUID = 1L;
 

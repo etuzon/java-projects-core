@@ -8,7 +8,7 @@ import io.github.etuzon.projects.core.utils.StringUtil;
  * @author Eyal Tuzon
  *
  */
-public abstract class EltnExceptionBase extends Exception {
+public abstract class EtuzonExceptionBase extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
@@ -16,7 +16,7 @@ public abstract class EltnExceptionBase extends Exception {
 	 * Constructor.
 	 * 
 	 */
-	public EltnExceptionBase() {
+	public EtuzonExceptionBase() {
 		super();
 	}
 	
@@ -25,7 +25,7 @@ public abstract class EltnExceptionBase extends Exception {
 	 * 
 	 * @param message Exception message.
 	 */
-	public EltnExceptionBase(String message) {
+	public EtuzonExceptionBase(String message) {
 		super(message);
 	}
 	
@@ -36,7 +36,7 @@ public abstract class EltnExceptionBase extends Exception {
 	 * 
 	 * @param e Input exception object that will be converted to exception message and stacktrace.
 	 */
-	public EltnExceptionBase(Exception e) {
+	public EtuzonExceptionBase(Exception e) {
 		super(e.getMessage() + "\nStacktrace:\n" + StringUtil.getExceptionStacktrace(e));
 	}
 }
