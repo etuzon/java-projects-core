@@ -2,8 +2,8 @@ package io.github.etuzon.projects.core.tests.utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import io.github.etuzon.projects.core.expections.InvalidValueException;

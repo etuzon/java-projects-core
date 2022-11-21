@@ -1,6 +1,7 @@
 package io.github.etuzon.projects.core.tests.utils;
 
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
+
 import org.testng.annotations.Test;
 
 import io.github.etuzon.projects.core.utils.DateUtil;
