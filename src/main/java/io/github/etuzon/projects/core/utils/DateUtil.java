@@ -49,8 +49,8 @@ public final class DateUtil {
 	 */
 	public String getCurrentDateForFile() {
 		String date = getCurrentDate();
-		date = date.replaceAll("/", "_");
-		date = date.replaceAll(":", "_");
+		date = date.replace("/", "_");
+		date = date.replace(":", "_");
 		date = date.replace(" ", "_");
 		return date;
 	}

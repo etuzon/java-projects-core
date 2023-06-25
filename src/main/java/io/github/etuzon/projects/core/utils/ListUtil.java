@@ -1,6 +1,7 @@
 package io.github.etuzon.projects.core.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import io.github.etuzon.projects.core.base.ObjectBase;
@@ -27,7 +28,7 @@ public final class ListUtil extends ObjectBase {
 	 * @return List of objects that exists in 'list' and in 'containList'.
 	 */
 	public static <T> List<T> getContainList(List<T> list, List<T> containList) {
-		List<T> result = new ArrayList<T>();
+		List<T> result = new ArrayList<>();
 
 		for (T obj : list) {
 			if (containList.contains(obj)) {
@@ -47,10 +48,10 @@ public final class ListUtil extends ObjectBase {
 	 * @return List of objects that exists in 'list but not in 'containList'.
 	 */
 	public static <T> List<T> getNotContainList(List<T> list, List<T> containList) {
-		List<T> result = new ArrayList<T>();
+		List<T> result = new ArrayList<>();
 
 		for (T obj : list) {
-			if (containList.contains(obj) == false) {
+			if (!containList.contains(obj)) {
 				result.add(obj);
 			}
 		}
@@ -65,19 +66,17 @@ public final class ListUtil extends ObjectBase {
 	 * @param startIndex Start index of sub array.
 	 * @param <T> Type of class of objects in input and output List.
 	 * @return List of sub array that start from startIndex.
+	 *         Return empty list in case startIndex is equal or bigger than array length.
 	 * @throws InvalidValueException in case array is null or startIndex is negative.
 	 */
 	public static <T> List<T> asList(T[] array, int startIndex) throws InvalidValueException {
 		validateNotNull(array);
 		validateNotNegative(startIndex);
-		
-		List<T> result = new ArrayList<T>();
-
-		for (int i = startIndex; i < array.length; i++) {
-			result.add(array[i]);
+		try {
+			return new ArrayList<>(Arrays.asList(array).subList(startIndex, array.length));
+		} catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+			return new ArrayList<>();
 		}
-
-		return result;
 	}
 	
 	/*******************************
@@ -91,10 +90,10 @@ public final class ListUtil extends ObjectBase {
 	public static <T> List<T> removeDuplication(List<T> list) throws InvalidValueException {
 	    validateNotNull(list);
 	    
-		List<T> uniqueList = new ArrayList<T>();
+		List<T> uniqueList = new ArrayList<>();
 		
 		for (T obj : list) {
-			if (uniqueList.contains(obj) == false) {
+			if (!uniqueList.contains(obj)) {
 				uniqueList.add(obj);
 			}
 		}
@@ -118,7 +117,7 @@ public final class ListUtil extends ObjectBase {
 		
 		String result = sb.toString();
 		
-		if (result.isEmpty() == false) {
+		if (!result.isEmpty()) {
 			result = StringUtil.removeLastChar(result);
 		}
 
@@ -132,14 +131,9 @@ public final class ListUtil extends ObjectBase {
 	 * @param <T> Type of class of objects in input args and output List.
 	 * @return List of the parameters.
 	 */
-	public static <T> List<T> asList(@SuppressWarnings("unchecked") T... args) {
-		List<T> result = new ArrayList<T>();
-	
-		for (T arg : args) {
-			result.add(arg);
-		}
-		
-		return result;
+	@SafeVarargs
+	public static <T> List<T> asList(T... args) {
+		return new ArrayList<>(Arrays.asList(args));
 	}
 	
 	/*******************************
@@ -150,12 +144,6 @@ public final class ListUtil extends ObjectBase {
 	 * @return Clone of input list.
 	 */
 	public static <T> List<T> clone(List<T> list) {
-		List<T> result = new ArrayList<T>();
-		
-		for (T member : list) {
-			result.add(member);
-		}
-		
-		return result;
+		return new ArrayList<>(list);
 	}
 }

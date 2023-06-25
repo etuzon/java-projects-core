@@ -24,7 +24,7 @@ public enum BooleanEnum {
 	
 	/************************************
 	 * Convert from String to BooleanEnum.
-	 * No case sensitive.
+	 * No case-sensitive.
 	 * 	
 	 * @param str String that represent boolean, true or false.
 	 * @return BooleanEnum that its value is:
@@ -49,7 +49,7 @@ public enum BooleanEnum {
     /************************************
      * Convert from BooleanEnum to Boolean.
      * @return Boolean value in case BooleanEnum is TRUE or FALSE.
-     *         In case BooleanEnum is NA, than return null.         
+     *         In case BooleanEnum is NA, then return null.
      */
 	public Boolean asBoolean() {
 		return value;
@@ -61,6 +61,7 @@ public enum BooleanEnum {
 	 * @return String representative of boolean.
 	 *         Return NA in case Boolean enum value is NA.
 	 */
+	@Override
 	public String toString() {
 		return name;
 	}
