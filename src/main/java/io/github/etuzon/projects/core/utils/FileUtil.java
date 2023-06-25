@@ -63,7 +63,7 @@ public final class FileUtil extends ObjectBase {
 
 		if (index == path.length() - 1) {
 			path = path.substring(0, index);
-			return (getParentDirectory(path));
+			return getParentDirectory(path);
 		}
 
 		return path.substring(0, index);
@@ -76,7 +76,8 @@ public final class FileUtil extends ObjectBase {
 	 * @param olderInDays Number of days that files should be older to be deleted.
 	 * @throws FileNotDeletedException in case file is not deleted.
 	 */
-	public static void deleteOldFiles(String directory, int olderInDays) throws FileNotDeletedException {
+	public static void deleteOldFiles(
+			String directory, int olderInDays) throws FileNotDeletedException {
 		File folder = new File(directory);
 		File[] fileArr = folder.listFiles();
 
@@ -84,7 +85,7 @@ public final class FileUtil extends ObjectBase {
 			return;
 		}
 
-		List<String> filesFailedToBeDeletedList = new ArrayList<String>();
+		List<String> filesFailedToBeDeletedList = new ArrayList<>();
 
 		for (File file : fileArr) {
 			if (file.isFile()) {
@@ -99,8 +100,9 @@ public final class FileUtil extends ObjectBase {
 			}
 		}
 
-		if (filesFailedToBeDeletedList.isEmpty() == false) {
-			throw new FileNotDeletedException(ListUtil.getMultilineStringFromList(filesFailedToBeDeletedList));
+		if (!filesFailedToBeDeletedList.isEmpty()) {
+			throw new FileNotDeletedException(
+					ListUtil.getMultilineStringFromList(filesFailedToBeDeletedList));
 		}
 	}
 
@@ -111,8 +113,8 @@ public final class FileUtil extends ObjectBase {
 	 * @param extensionArr Array of extensions.
 	 * @return File list in directory that have extension from the extensions array.
 	 */
-	public static List<String> getFileList(String directory, String extensionArr[]) {
-		List<String> fileNameList = new ArrayList<String>();
+	public static List<String> getFileList(String directory, String[] extensionArr) {
+		List<String> fileNameList = new ArrayList<>();
 
 		File folder = new File(directory);
 		File[] fileArr = folder.listFiles();
@@ -132,12 +134,13 @@ public final class FileUtil extends ObjectBase {
 		return fileNameList;
 	}
 
-	private static String getFileNameContainExtension(String filename, String extensionArr[]) {
+	private static String getFileNameContainExtension(String filename, String[] extensionArr) {
 		filename = filename.trim();
 
-		if ((filename.indexOf(".") > 0) && (filename.indexOf(".") < filename.length() - 1)) {
+		if (filename.indexOf(".") < filename.length() - 1) {
 			for (String extension : extensionArr) {
 				int index = filename.indexOf("." + extension);
+
 				if (index > 0) {
 					return filename;
 				}

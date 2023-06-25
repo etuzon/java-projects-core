@@ -3,12 +3,13 @@ package io.github.etuzon.projects.core.base;
 import io.github.etuzon.projects.core.expections.InvalidValueException;
 
 /***************************************
- * Base object that can be inherit by every class.
+ * Base object that can be inherited by every class.
  * 
  * @author Eyal Tuzon
  * 
  */
 public abstract class ObjectBase {
+
     /***************************************
      * Validate that array not null.
      * Method throws InvalidValueException in case array is null.

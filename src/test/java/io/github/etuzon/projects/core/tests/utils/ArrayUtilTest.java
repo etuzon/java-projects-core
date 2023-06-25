@@ -28,7 +28,8 @@ public class ArrayUtilTest extends BaseUnitTest {
         }
 
         SoftAssertUnitTest.assertTrueNow(
-                currentIndex == index, "Element [" + arrElement + "] is in index [" + currentIndex
+                currentIndex == index,
+                "Element [" + arrElement + "] is in index [" + currentIndex
                         + "] and should be in index [" + index + "]",
                 "Verify that element [" + arrElement + "] is in index [" + index + "]");
     }
@@ -45,13 +46,16 @@ public class ArrayUtilTest extends BaseUnitTest {
 
     @Test(dataProvider = "strArrObject")
     public void isObjectInArray_Test(String element) throws AutomationUnitTestException {
-        SoftAssertUnitTest.assertTrueNow(isObjectInArray(strArr, element), "[" + element + "] should be exist in strArr but it does not exist",
+        SoftAssertUnitTest.assertTrueNow(
+                isObjectInArray(strArr, element),
+                "[" + element + "] should be exist in strArr but it does not exist",
                 "Verify that [" + element + "] exist in strArr");
     }
 
     @Test(dataProvider = "strArrObjectNegative")
     public void isObjectInArray_Negative_Test(String element) throws AutomationUnitTestException {
-        SoftAssertUnitTest.assertTrueNow(isObjectInArray(strArr, element) == false,
+        SoftAssertUnitTest.assertTrueNow(
+                !isObjectInArray(strArr, element),
                 "[" + element + "] should not be exist in strArr but it exist",
                 "Verify that [" + element + "] not exist in strArr");
     }

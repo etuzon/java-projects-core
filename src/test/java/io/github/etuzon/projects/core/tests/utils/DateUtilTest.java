@@ -25,10 +25,12 @@ public class DateUtilTest extends BaseUnitTest {
 		logger.info("Sleep for [" + sleep + "] ms");
 		ThreadUtil.sleep(sleep);
 
-		SoftAssertUnitTest.assertTrueNow(DateUtil.isTimeout(startTime, timeout) == false,
-				"Should not be timeout after sleep for [" + sleep + "] ms and timeout parameter is [" + timeout + "]",
-				"Verify that isTimeout return false after sleep for [" + sleep + "] and timeout parameter is ["
-						+ timeout + "]");
+		SoftAssertUnitTest.assertTrueNow(
+				!DateUtil.isTimeout(startTime, timeout),
+				"Should not be timeout after sleep for [" + sleep
+				+ "] ms and timeout parameter is [" + timeout + "]",
+				"Verify that isTimeout return false after sleep for ["
+				+ sleep + "] and timeout parameter is [" + timeout + "]");
 	}
 	
 	@Test
@@ -41,10 +43,12 @@ public class DateUtilTest extends BaseUnitTest {
 		logger.info("Sleep for [" + sleep + "] ms");
 		ThreadUtil.sleep(sleep);
 
-		SoftAssertUnitTest.assertTrueNow(DateUtil.isTimeout(startTime, timeout),
-				"Should be timeout after sleep for [" + sleep + "] ms and timeout parameter is [" + timeout + "]",
-				"Verify that isTimeout return true after sleep for [" + sleep + "] and timeout parameter is ["
-						+ timeout + "]");
+		SoftAssertUnitTest.assertTrueNow(
+				DateUtil.isTimeout(startTime, timeout),
+				"Should be timeout after sleep for [" + sleep
+				+ "] ms and timeout parameter is [" + timeout + "]",
+				"Verify that isTimeout return true after sleep for ["
+				+ sleep + "] and timeout parameter is [" + timeout + "]");
 	}
 	
 	@Test
@@ -57,9 +61,11 @@ public class DateUtilTest extends BaseUnitTest {
 		logger.info("Sleep for [" + sleep + "] ms");
 		ThreadUtil.sleep(sleep);
 
-		SoftAssertUnitTest.assertTrueNow(DateUtil.isTimeout(startTime, timeout) == false,
-				"Should not be timeout after sleep for [" + sleep + "] ms and timeout parameter is [" + timeout + "]",
-				"Verify that isTimeout return false after sleep for [" + sleep + "] and timeout parameter is ["
-						+ timeout + "]");
+		SoftAssertUnitTest.assertTrueNow(
+				!DateUtil.isTimeout(startTime, timeout),
+				"Should not be timeout after sleep for [" + sleep
+						+ "] ms and timeout parameter is [" + timeout + "]",
+				"Verify that isTimeout return false after sleep for ["
+						+ sleep + "] and timeout parameter is [" + timeout + "]");
 	}
 }

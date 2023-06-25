@@ -25,16 +25,16 @@ public final class Ip4Util extends ObjectBase {
 	public static boolean isValidIp(String str) throws InvalidValueException {
 		validateNotNull(str);
 
-		String splitStr[] = str.split("\\.");
+		String[] splitStr = str.split("\\.");
 
 		if (splitStr.length != 4)
 			return false;
 
 		for (String temp : splitStr) {
 			try {
-				Integer octat = Integer.valueOf(temp);
+				Integer octet = Integer.valueOf(temp);
 
-				if (isNumberBetween0To255(octat) == false) {
+				if (!isByteValue(octet)) {
 					return false;
 				}
 			} catch (NumberFormatException e) {
@@ -48,28 +48,27 @@ public final class Ip4Util extends ObjectBase {
 	/******************************************************
 	 * Convert int array to String in IPv4 structure.
 	 * 
-	 * @param octats Array of 4 int cells.
+	 * @param octets Array of 4 int cells.
 	 * @return String in IPv4 structure. Return null in case input array is not IPv4.
 	 * @throws InvalidValueException in case input array is null.
 	 */
-	public static String toIPv4(int octats[]) throws InvalidValueException {
-		validateNotNull(octats);
+	public static String toIPv4(int[] octets) throws InvalidValueException {
+		validateNotNull(octets);
 
-		if (octats.length != 4) {
+		if (octets.length != 4) {
 			return null;
 		}
 
 		for (int i=0; i < 4; i++) {
-			if (isNumberBetween0To255(octats[i]) == false) {
+			if (!isByteValue(octets[i])) {
 				return null;
 			}
 		}
 
-		return String.valueOf(octats[0]) + "." + String.valueOf(octats[1]) + "." + String.valueOf(octats[2]) + "."
-				+ String.valueOf(octats[3]);
+		return octets[0] + "." + octets[1] + "." + octets[2] + "." + octets[3];
 	}
 
-	private static boolean isNumberBetween0To255(Integer num) {
-		return (num >= 0) && (num <= 255);
+	private static boolean isByteValue(Integer num) {
+		return num >= 0 && num <= 255;
 	}
 }
